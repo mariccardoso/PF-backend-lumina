@@ -1,24 +1,26 @@
 import prisma from "../../prisma/client.js";
 
-class NotaModel {
+class UserModel {
   getAll = async () => {
-    return await prisma.note.findMany();
+    return await prisma.user.findMany();
   };
 
-  create = async (titulo, conteudo) => {
-    return await prisma.note.create({
+  create = async (name, email, password, role ) => {
+    return await prisma.user.create({
       data: {
-        titulo,
-        conteudo
+        name,
+        email,
+        password,
+        role
       },
     });
   };
 
-  update = async (id, favorita, cor, titulo, conteudo) => {
+  update = async (id, name, email, password, role) => {
     console.log();
     
     try {
-      return await prisma.note.update({
+      return await prisma.user.update({
         where: { id },
         data: {
           favorita: favorita !== undefined ? favorita : true,
@@ -28,7 +30,7 @@ class NotaModel {
         },
       });
     } catch (error) {
-      // Se a nota não for encontrada, o Prisma lançará uma exceção
+      // Se a user não for encontrada, o Prisma lançará uma exceção
       if (error.code === "P2025") {
         return null;
       }
@@ -38,7 +40,7 @@ class NotaModel {
 
   delete = async (id) => {
     try {
-      await prisma.note.delete({
+      await prisma.user.delete({
         where: { id },
       });
       return true;
@@ -52,10 +54,10 @@ class NotaModel {
   };
 
   getById = async (id) => {
-    return await prisma.note.findUnique({
+    return await prisma.user.findUnique({
       where: { id },
     });
   };
 }
 
-export default new NotaModel();
+export default new UserModel();

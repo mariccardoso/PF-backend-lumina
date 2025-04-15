@@ -1,9 +1,9 @@
 import express from "express";
-import notaRoutes from "./routes/notaRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 const app = express();
 const port = 4000;
 app.use(express.json());
-app.use("/notas", notaRoutes);
+app.use("/users", userRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

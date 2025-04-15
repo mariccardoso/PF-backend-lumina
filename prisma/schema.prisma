@@ -7,23 +7,47 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Task {
-  id        Int     @id @default(autoincrement())
-  descricao String
-  concluida Boolean @default(false)
-  criadaEm  DateTime @default(now())
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+  role     String @default("user")
 
-  @@map("tasks")
+  @@map("users")
 }
 
-model Note {
-  id            Int       @id @default(autoincrement())
-  titulo        String
-  conteudo      String
-  favorita      Boolean   @default(false)
-  cor           String?   // Para permitir personalização
-  criadaEm      DateTime  @default(now())
-  atualizadaEm  DateTime  @updatedAt
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String
 
-  @@map("notas")
+  @@map("categories")
 }
+
+model Post {
+  id       Int    @id @default(autoincrement())
+  title    String
+  content  String
+  imageUrl String
+
+  @@map("posts")
+}
+
+model Comment {
+  id      Int    @id @default(autoincrement())
+  content String
+  userId  Int
+  createdAt DateTime @default(now())
+
+  @@map("comments")
+}
+
+model Like {
+  id      Int    @id @default(autoincrement())
+  postId  Int
+  userId  Int
+  createdAt DateTime @default(now())
+
+  @@map("likes")
+}
+
