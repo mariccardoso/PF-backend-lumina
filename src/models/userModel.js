@@ -45,7 +45,7 @@ class UserModel {
       });
       return true;
     } catch (error) {
-      // Se a tarefa não for encontrada, o Prisma lançará uma exceção
+      // Seo Usuário não for encontrado, o Prisma lançará uma exceção
       if (error.code === "P2025") {
         return false;
       }
