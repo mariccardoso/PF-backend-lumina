@@ -26,7 +26,6 @@ class PostController {
     update = async (req, res) => {
         const { id } = req.params;
         const { title, content, imageUrl } = req.body;
-
         try {
             const postUpdated = await postModel.update(
                 parseInt(id),
@@ -46,6 +45,39 @@ class PostController {
         }
     };
 
+    delete = async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const sucess = await postModel.delete(parseInt(id));
+
+            if (!sucess) {
+                return res.status(404).json({ erro: "Postagem não encontrado" });
+            }
+
+            res.status(204).send();
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ erro: "Erro ao excluir postagem" });
+        }
+    };
+
+    getById = async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const post = await postModel.getById(parseInt(id));
+
+            if (!post) {
+                return res.status(404).json({ erro: "Postagem não encontrada" });
+            }
+
+            res.json(post);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ erro: "Erro ao buscar postagem senhora" });
+        }
+    };
 
 
 }
