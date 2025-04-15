@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id        Int     @id @default(autoincrement())
+  descricao String
+  concluida Boolean @default(false)
+  criadaEm  DateTime @default(now())
+
+  @@map("tasks")
+}
+
+model Note {
+  id            Int       @id @default(autoincrement())
+  titulo        String
+  conteudo      String
+  favorita      Boolean   @default(false)
+  cor           String?   // Para permitir personalização
+  criadaEm      DateTime  @default(now())
+  atualizadaEm  DateTime  @updatedAt
+
+  @@map("notas")
+}
