@@ -23,14 +23,14 @@ class UserModel {
       return await prisma.user.update({
         where: { id },
         data: {
-          favorita: favorita !== undefined ? favorita : true,
-          titulo,
-          cor,
-          conteudo
+          name,
+          email,
+          password,
+          role
         },
       });
     } catch (error) {
-      // Se a user não for encontrada, o Prisma lançará uma exceção
+      // Se o usuário não for encontrado, o Prisma lançará uma exceção
       if (error.code === "P2025") {
         return null;
       }
