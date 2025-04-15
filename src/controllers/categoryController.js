@@ -50,9 +50,9 @@ class CategoryController {
         const { id } = req.params;
 
         try {
-            const sucesso = await categoryModel.delete(parseInt(id));
+            const sucess = await categoryModel.delete(parseInt(id));
 
-            if (!sucesso) {
+            if (!sucess) {
                 return res.status(404).json({ erro: "Usuário não encontrado" });
             }
 
