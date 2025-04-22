@@ -73,7 +73,7 @@ class UserController {
       const user = await userModel.getById(parseInt(id));
 
       if (!user) {
-        return res.status(404).json({ erro: "Usuário não encontrada" });
+        return res.status(404).json({ erro: "Usuário não encontrado" });
       }
 
       res.json(user);

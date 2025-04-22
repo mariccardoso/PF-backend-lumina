@@ -35,7 +35,7 @@ class PostController {
             );
 
             if (!postUpdated) {
-                return res.status(404).json({ erro: "Postagem não encontradaa" });
+                return res.status(404).json({ erro: "Postagem não encontrada" });
             }
 
             res.json(postUpdated);
@@ -52,7 +52,7 @@ class PostController {
             const sucess = await postModel.delete(parseInt(id));
 
             if (!sucess) {
-                return res.status(404).json({ erro: "Postagem não encontrado" });
+                return res.status(404).json({ erro: "Postagem não encontrada" });
             }
 
             res.status(204).send();
@@ -75,7 +75,7 @@ class PostController {
             res.json(post);
         } catch (error) {
             console.error(error);
-            res.status(500).json({ erro: "Erro ao buscar postagem senhora" });
+            res.status(500).json({ erro: "Erro ao buscar postagem" });
         }
     };
 
