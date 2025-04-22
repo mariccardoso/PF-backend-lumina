@@ -7,7 +7,7 @@ class LikeController {
             res.json(likes);
         } catch (error) {
             console.error(error);
-            res.status(500).json({ erro: "Erro ao buscar likeagens" });
+            res.status(500).json({ erro: "Erro ao buscar curtidas" });
         }
     };
     create = async (req, res) => {
@@ -34,7 +34,7 @@ class LikeController {
             );
 
             if (!likeUpdated) {
-                return res.status(404).json({ erro: "Curtida não encontradaa" });
+                return res.status(404).json({ erro: "Curtida não encontrada" });
             }
 
             res.json(likeUpdated);
@@ -51,7 +51,7 @@ class LikeController {
             const sucess = await likeModel.delete(parseInt(id));
 
             if (!sucess) {
-                return res.status(404).json({ erro: "Curtida não encontrado" });
+                return res.status(404).json({ erro: "Curtida não encontrada" });
             }
 
             res.status(204).send();

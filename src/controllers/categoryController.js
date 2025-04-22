@@ -7,7 +7,7 @@ class CategoryController {
             res.json(categories);
         } catch (error) {
             console.error(error);
-            res.status(500).json({ erro: "Erro ao buscar categorias" });
+            res.status(500).json({ erro: "Erro ao buscar categoria" });
         }
     };
 
@@ -53,7 +53,7 @@ class CategoryController {
             const sucess = await categoryModel.delete(parseInt(id));
 
             if (!sucess) {
-                return res.status(404).json({ erro: "Usuário não encontrado" });
+                return res.status(404).json({ erro: "Categoria não encontrado" });
             }
 
             res.status(204).send();
@@ -70,7 +70,7 @@ class CategoryController {
             const category = await categoryModel.getById(parseInt(id));
 
             if (!category) {
-                return res.status(404).json({ erro: "Usuário não encontrada" });
+                return res.status(404).json({ erro: "Categoria não encontrada" });
             }
 
             res.json(category);
