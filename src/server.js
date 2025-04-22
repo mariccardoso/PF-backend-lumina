@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors"
 import userRoutes from "./routes/userRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
@@ -6,6 +7,7 @@ import commentRoutes from "./routes/commentRoutes.js"; // Importando as rotas de
 import likeRoutes from "./routes/likeRoutes.js"; // Importando as rotas de likes
 
 const app = express();
+app.use(cors());
 const port = 4000;
 app.use(express.json());
 app.use("/users", userRoutes);
