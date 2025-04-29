@@ -1,12 +1,12 @@
 import express from 'express';
 
-// Importar todas as rotas
+// Importar todas as routas
 import authRouter from './auth.routes.js';
-import userRoutes from "./userRoutes.js";
-import categoryRoutes from "./categoryRoutes.js"; // Caminho corrigido
-import postRoutes from "./postRoutes.js"; // Caminho corrigido
-import commentRoutes from "./commentRoutes.js"; // Caminho corrigido
-import likeRoutes from "./likeRoutes.js"; // Caminho corrigido
+import categoryRouter from "./categoryRoutes.js";
+import postRouter from "./postRoutes.js";
+import commentRouter from "./commentRoutes.js"; // Importando as rotas de comentários
+import likeRouter from "./likeRoutes.js"; // Importando as rotas de likes
+
 
 import authMiddleware from '../middleware/authMiddleware.js';
 
@@ -15,13 +15,12 @@ const router = express.Router();
 // Rotas públicas
 router.use('/auth', authRouter);
 
-// Rotas protegidas
-router.use(authMiddleware);
+// Rotas privadas (protegidas por autenticação)
+router.use(authMiddleware); // Middleware de autenticação
 
-router.use("/users", userRoutes);
-router.use("/categories", categoryRoutes);
-router.use("/post", postRoutes); 
-router.use("/comments", commentRoutes); 
-router.use("/likes", likeRoutes); 
+router.use("/categories", categoryRouter);
+router.use("/post", postRouter); // Adicione esta linha para incluir as rotas de postagens
+router.use("/comments", commentRouter); // Adicione esta linha para incluir as rotas de comentários
+router.use("/likes", likeRouter); // Adicione esta linha para incluir as rotas de likes
 
 export default router;
