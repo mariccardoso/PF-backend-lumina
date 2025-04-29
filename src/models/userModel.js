@@ -1,63 +1,66 @@
-import prisma from "../../prisma/client.js";
+import prisma from "../../prisma/prisma.js";
 
 class UserModel {
-  getAll = async () => {
-    return await prisma.user.findMany();
-  };
+  // Obter todos os usuários
+  async findAll() {
+    const users = await prisma.user.findMany();
 
-  create = async (name, email, password, role ) => {
-    return await prisma.user.create({
-      data: {
-        name,
-        email,
-        password,
-        role
+    return users;
+  }
+
+  // Obter um usuário pelo ID
+  async findById(id) {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: Number(id),
       },
     });
-  };
 
-  update = async (id, name, email, password, role) => {
-    console.log();
+    return user;
+  }
+
+    // Obter um usuário pelo email
+    async findByEmail(email) {
+        const user = await prisma.user.findUnique({
+            where: {
+            email: email,
+            },
+        });
     
-    try {
-      return await prisma.user.update({
-        where: { id },
-        data: {
-          name,
-          email,
-          password,
-          role
-        },
-      });
-    } catch (error) {
-      // Se o usuário não for encontrado, o Prisma lançará uma exceção
-      if (error.code === "P2025") {
-        return null;
-      }
-      throw error;
-    }
-  };
+        return user;
+        }
 
-  delete = async (id) => {
-    try {
-      await prisma.user.delete({
-        where: { id },
-      });
-      return true;
-    } catch (error) {
-      // Seo Usuário não for encontrado, o Prisma lançará uma exceção
-      if (error.code === "P2025") {
-        return false;
-      }
-      throw error;
-    }
-  };
-
-  getById = async (id) => {
-    return await prisma.user.findUnique({
-      where: { id },
+  // Criar um novo usuário
+  async create(data) {
+    const user = await prisma.user.create({
+      data,
     });
-  };
+
+    return user;
+  }
+
+  // Atualizar um usuário
+  async update(id, data) {
+    const user = await prisma.user.update({
+      where: {
+        id: Number(id)
+      },
+      data
+    });
+
+    return user;
+  }
+
+  // Excluir um usuário
+  async delete(id) {
+    await prisma.user.delete({
+      where: {
+        id: Number(id)
+      }
+    });
+
+    return true;
+  }
 }
 
 export default new UserModel();
