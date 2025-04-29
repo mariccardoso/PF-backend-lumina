@@ -13,8 +13,8 @@ class PostController {
     create = async (req, res) => {
         const { title, content, imageUrl } = req.body;
         try {
-            if (!title || !content || !imageUrl) {
-                return res.status(400).json({ erro: "Todos os campos são obrigatórios" });
+            if (!title || !imageUrl) {
+                return res.status(400).json({ erro: "Titulo e imagem são campos obrigatórios" });
             }
             const newPost = await postModel.create(title, content, imageUrl);
             res.status(201).json(newPost);
