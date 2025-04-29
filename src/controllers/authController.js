@@ -56,37 +56,43 @@ class AuthController {
 
   async login(req, res) {
     try {
-      const { email, password } = req.body;
+        const { email, password } = req.body;
 
-      //Validação básica
-      if (!email || !password) {
-        return res
-          .status(400)
-          .json({ error: "Os campos email e senha são obrigatórios" });
-      }
+        // Validação básica
+        if (!email || !password) {
+            return res
+                .status(400)
+                .json({ error: "Os campos email e senha são obrigatórios" });
+        }
 
-      // Verificar se o usuário existe
-      const userExists = await UserModel.findByEmail(email);
-      if (!userExists) {
-        return res.status(401).json({ error: "Credenciais inválidas" });
-      }
+        // Verificar se o usuário existe
+        const userExists = await UserModel.findByEmail(email);
+        if (!userExists) {
+            return res.status(401).json({ error: "Credenciais inválidas" });
+        }
 
         // Verificar senha
         const isPasswordValid = await bcrypt.compare(password, userExists.password);
         if (!isPasswordValid) {
-          return res.status(401).json({ error: "Credenciais inválidas" });
+            return res.status(401).json({ error: "Credenciais inválidas" });
+        }
+
+        // Verificar se a chave secreta está definida
+        const secret = process.env.JWT_SECRET;
+        if (!secret) {
+            throw new Error("JWT_SECRET não está definido.");
         }
 
         // Gerar token JWT
         const token = jwt.sign(
             { 
-              id: userExists.id,
-              name: userExists.name,
-              email: userExists.email,
-             }, 
-             process.env.JWT_SECRET,
+                id: userExists.id,
+                name: userExists.name,
+                email: userExists.email,
+            }, 
+            secret,
             {
-              expiresIn: "24h",
+                expiresIn: "24h",
             }
         );
 
@@ -99,7 +105,7 @@ class AuthController {
         console.error("Erro ao fazer login:", error);
         res.status(500).json({ error: "Erro ao fazer login" });
     }
-  }
+}
 }
 
 export default new AuthController();
