@@ -14,12 +14,12 @@ const router = express.Router();
 
 // Rotas públicas
 router.use('/auth', authRouter);
+router.use("/post", postRouter); // Adicione esta linha para incluir as rotas de postagens
 
 // Rotas privadas (protegidas por autenticação)
 router.use(authMiddleware); // Middleware de autenticação
 
 router.use("/categories", categoryRouter);
-router.use("/post", postRouter); // Adicione esta linha para incluir as rotas de postagens
 router.use("/comments", commentRouter); // Adicione esta linha para incluir as rotas de comentários
 router.use("/likes", likeRouter); // Adicione esta linha para incluir as rotas de likes
 
