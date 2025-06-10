@@ -17,5 +17,5 @@ RUN npx prisma generate
 
 EXPOSE 4205
 
-# Comando com verificação do seed
-CMD ["sh", "-c", "npx prisma db push && ([ -f prisma/seed/seed.js ] && node prisma/seed/seed.js || echo 'Seed não encontrado, pulando...') && npm run start"]
+# Comando com caminho correto do seed
+CMD ["sh", "-c", "npx prisma db push && ([ -f prisma/seed.js ] && node prisma/seed.js || echo 'Seed não encontrado, pulando...') && npm run start"]
