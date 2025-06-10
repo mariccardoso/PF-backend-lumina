@@ -8,5 +8,4 @@ node_modules
 .env.production.local
 coverage
 .nyc_output
-README.md
-.gitignore
+!src/
