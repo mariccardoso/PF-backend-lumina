@@ -12,10 +12,14 @@ COPY . .
 # Criar diretório para SQLite
 RUN mkdir -p data
 
+# Copiar e dar permissão ao script
+COPY start.sh ./
+RUN chmod +x start.sh
+
 # Gerar cliente Prisma
 RUN npx prisma generate
 
 EXPOSE 4205
 
-# Comando direto sem script complexo
-CMD ["sh", "-c", "npx prisma db push && npm run start"]
+# Usar o script personalizado
+CMD ["./start.sh"]
