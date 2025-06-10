@@ -11,7 +11,11 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "build": "npx prisma generate",
-    "prisma:migrate": "npx prisma migrate dev"
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:seed": "node prisma/seed/seed.js"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
