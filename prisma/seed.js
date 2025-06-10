@@ -55,7 +55,17 @@ async function main() {
           title: "Autocuidado como Ativismo: Ser Você Também É Resistência",
           content: "Num mundo que insiste em padronizar corpos, sentimentos e comportamentos, cuidar de si mesma com ternura é um ato revolucionário. Dizer “não” ao que não te representa e “sim” ao que te nutre é uma postura política. Escolher sua paz, sua saúde mental e seu brilho natural é um manifesto diário. Autocuidado não é fuga — é resistência consciente e amorosa.",
           imageUrl: "https://www.setesc.ms.gov.br/wp-content/uploads/2020/06/capa-1.jpeg"
-        }
+        },
+        {
+            title: "Autoconhecimento é o Novo Skincare",
+            content: "Cuidar da mente é tão essencial quanto cuidar da pele. Descubra como pequenas mudanças de hábito podem transformar sua autoestima.",
+            imageUrl: "https://etalent.com.br/wp-content/uploads/2022/12/Artigo-Autoconhecimento.jpg"
+        },
+        {
+            title: "Minimalismo na Rotina de Beleza: Menos é Mais",
+            content: "Abandone o excesso de produtos e abrace uma rotina mais consciente e eficiente. Sua pele — e seu bolso — agradecem.",
+            imageUrl: "https://nati.com.br/wp-content/uploads/2022/01/maquiagem-natural-compressed-2.jpg"
+        },
       ]
   });
 }
