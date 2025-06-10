@@ -15,7 +15,7 @@ RUN mkdir -p data
 # Gerar cliente Prisma
 RUN npx prisma generate
 
-EXPOSE 4102
+EXPOSE 4205
 
 # Comando direto sem script complexo
 CMD ["sh", "-c", "npx prisma db push && npm run start"]

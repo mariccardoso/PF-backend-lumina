@@ -1,16 +1,16 @@
 services:
   app:
     build: .
-    container_name: lumina_project
+    container_name: lumina_project_v2
     restart: unless-stopped
     ports:
-      - "4102:4102"
+      - "4205:4205"
     environment:
-      - PORT=4102
-      - DATABASE_URL=file:./data/database.db
-      - JWT_SECRET=sua_chave_secreta_lumina_muito_forte_e_segura
+      - PORT=4205
+      - DATABASE_URL=file:./data/lumina_v2.db
+      - JWT_SECRET=lumina_jwt_secret_2025_super_strong_key_v2
     volumes:
-      - sqlite_data:/app/data
+      - lumina_sqlite_data_v2:/app/data
 
 volumes:
-  sqlite_data:
+  lumina_sqlite_data_v2:
