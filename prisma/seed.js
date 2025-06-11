@@ -14,7 +14,7 @@ async function main() {
         {
           title: "Skincare Inteligente: Rotina Simples, Resultados Poderosos",
           content: "Não é sobre ter 10 passos — é sobre ter os passos certos. Uma rotina eficiente de skincare inclui limpeza, hidratação e proteção solar. Esses três pilares, se mantidos diariamente, promovem regeneração, controle da oleosidade e luminosidade natural. O segredo está na constância e no autoconhecimento da sua pele. Skincare não é luxo — é autocuidado estratégico.",
-          imageUrl: "https://oxioz.com.br/wp-content/uploads/2024/02/rotina-skincare-cuidados-com-a-pele.jpg"
+          imageUrl: "https://boxmagenta.com.br/blog/content/images/2021/03/rotina-de-skincare-pele-oleosa-1.jpg"
         },
         {
           title: "Cuidados com a Pele no Verão: Proteja Sua Beleza",
